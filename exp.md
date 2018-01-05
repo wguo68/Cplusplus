@@ -156,7 +156,7 @@ int main() {
 
 ```
  
-实验4 :string、vector和迭代器
+### 实验4 :string、vector和迭代器
 
 要求在遍历时，采用下标运算符、Range for、和迭代器三种方式。并尽可能使用auto或decltype
 
@@ -216,9 +216,9 @@ int main(){
 }
 ```
 
-实验5 : 数组、指针和迭代器
+### 实验5 : 数组、指针和迭代器
 
-1. 将下列程序的下标运算符访问方式修改成 Range for和指针访问方式
+1. 将下列程序的下标运算符访问方式修改成 Range for和指针访问方式。并尽可能使用auto或decltype
 ```cpp
 /* C++ Program - Multiply Two Matrices */
 		
