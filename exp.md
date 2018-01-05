@@ -394,25 +394,28 @@ int main(){
 
 ### 实验8 : 函数
 
-1. 编写函数，用于交换两个变量的值，要求用传递变量指针（传值方式）和传递变量引用方式（传引用）写出两个这函数，并编写主函数测试这两个函数。
+1. 编写一个函数，输出2个整数之间的所有整数。并在主程序里测试这个函数。
+```cpp
+ void Print(int a, int b){
+
+ }
+
+ int main(){
+ 	int x,y;
+ 	while(std::cin>>x){
+ 		if(std::cin>>y{
+             //调用Print函数
+            ?
+ 		}
+ 		else break;
+ }
 
 2. 编写最大公约数的函数并测试它
 
-3. 用指针方式实现一些常见的 C 风格字符串的处理函数。如
-strcpy,strcat,strlen,strcmp,…. 具 体 可 参 见 msdn 对 这 些 函 数 的 说 明 ：
-http://msdn.microsoft.com/en-us/library/kk6xf663.aspx。
-示例（也可参考 http://www.math.bas.bg/~nkirov/2005/oop/deitel/cpphtp4_05.pdf ）：
-```cpp
-int Strlen(const char *str){
- char*p = str;;
- while( *p!=’\0’) p++;
- return p-str;
-}
+
+3. 编写swap函数，用于交换两个形参的值，分别用传值(包括传指针)和传引用方式将实参传给形参，并编写主函数测试这两个函数。
+
 ```
-
-
-
-
 
 
 
