@@ -423,11 +423,13 @@ int main(){
  	int x,y;
  	while(std::cin>>x){
  		if(std::cin>>y{
-             //调用Print函数
-            ?
+        //调用Print函数
+
+        ?
  		}
  		else break;
  }
+ ```
 
 2. 编写最大公约数的函数并测试它
 
