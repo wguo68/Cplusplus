@@ -111,12 +111,12 @@ void f4(){
 
 ### 实验3 :自定义类型
 
-3.在下列程序基础上按照你自己的想法重写编写Sales_data及其使用程序，完成你想完成的功能。
+3.在下列程序基础上按照你自己的想法重写编写Sales_data及其使用程序，完成你想完成的功能。并修改成将struct Sales_data放在单独的头文件中，main函数文件#include这个头文件。
 
 ```cpp
 #include <iostream>
 #include <string>
-struct Sales_data {
+struct Sales_data{
 	std::string bookNo;
 	unsigned units_sold = 0;
 	double revenue = 0.0;
@@ -156,10 +156,119 @@ int main() {
 
 ```
  
+实验4 :string、vector和迭代器
+
+要求在遍历时，采用下标运算符、Range for、和迭代器三种方式。并尽可能使用auto或decltype
+
+1. 理解并改正下列程序的错误,并运行之。
+```cpp
+void f2() {
+	string s("hello world");
+	if (!s.empty()) 
+		s[0] = toupper(s[0]); //首字母都转变成大写字母
+	
+	for (int i = 0; i<=s.size(); i++) //此处有错
+		cout << s[i];	
+	
+	//将每个字母都转变成大写字母
+	for (auto c : s2)   //此处有错
+		c = toupper(c); 
+						
+	cout << s2 << endl;
+}
+```
 
 
 
+2. 实现一个管理销售数据的程序，在头文件
+Sales_Item.h中定义2个数据类型：商品单价和销售项
+struct Item_Price{
+	string name;
+	double price;
+};
+struct Sales_Item{
+	string name;
+	unsigned num = 0;
+	double revenue = 0.0;
+};
 
+然后其中用2个vector向量:
+```cpp
+    vector<Item_Price> Item_Prices; //所有商品价格
+    vector<Sales_Item> Sales_Items; //所有销售数据
+```
+表示程序的主要数据结构，并实现添加一个销售项、查询某商品价格、查询某商品的销售情况、统计总销售额、输出总商品目录，输出总销售单等功能。
+```cpp
+//添加相关头文件等...
+   ？
+int main(){
+    vector<Item_Price> Item_Prices; //所有商品价格
+    vector<Sales_Item> Sales_Items;
+    char cmd; //命令字符
+    while(cin>>cmd){
+    	if(cmd=='a'||cmd=='A'){//添加销售项目
+
+            ？
+    	}
+        //其他命令
+    	?
+    }
+}
+```
+
+实验5 : 数组、指针和迭代器
+
+1. 将下列程序的下标运算符访问方式修改成 Range for和指针访问方式
+```cpp
+/* C++ Program - Multiply Two Matrices */
+		
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	int mat1[3][3], mat2[3][3], mat3[3][3], sum=0, i, j, k;
+	cout<<"Enter first matrix element (3*3) : ";
+	for(i=0; i<3; i++)
+	{
+		for(j=0; j<3; j++)
+		{
+			cin>>mat1[i][j];
+		}
+	}
+	cout<<"Enter second matrix element (3*3) : ";
+	for(i=0; i<3; i++)
+	{
+		for(j=0; j<3; j++)
+		{
+			cin>>mat2[i][j];
+		}
+	}
+	cout<<"Multiplying two matrices...\n";
+	for(i=0; i<3; i++)
+	{
+		for(j=0; j<3; j++)
+		{
+			sum=0;
+			for(k=0; k<3; k++)
+			{
+				sum = sum + mat1[i][k] * mat2[k][j];
+			}
+			mat3[i][j] = sum;
+		}
+	}
+	cout<<"\nMultiplication of two Matrices : \n";
+	for(i=0; i<3; i++)
+	{
+		for(j=0; j<3; j++)
+		{
+			cout<<mat3[i][j]<<" ";
+		}
+		cout<<"\n";
+	}
+	getch();
+}
+```
 
 ## C++习题
 
