@@ -1,3 +1,4 @@
+
 "[教小白精通编程](https://weibo.com/6196175626/profile?topnav=1&wvr=6)"系列课程之
 
 ##  “C++11/14课程”实验 
@@ -10,18 +11,22 @@
 圆锥的体积 = pi * radius^2 * (height/3)
 
 ```cpp
+   ？
 int main(){
-	//...
+
 	char cmd;
 	while(cin>>cmd){
        if(cmd=='C'||cmd=='c'){
           cout<<"立方体的体积是:\n"<<" "<<endl;
        }
-       else if(?){ //球
+       else if(?){ 
+           //...
+
           cout<<"球的体积是:\n"<<" "<<endl;
        }
-       else if(?){ //圆锥
+       else if(?){ 
           //...
+
           cout<<"圆锥的体积是:\n"<<" "<<endl;
        }
        else break;
@@ -35,6 +40,12 @@ int main(){
 
 ```cpp
 
+        *
+      * * *
+    * * * * *
+  * * * * * * *
+* * * * * * * * *
+
  //添加你的代码
    ?
  int main(){
@@ -43,12 +54,18 @@ int main(){
 
     for(int i ; i<?; ?){
     	//输出第i行
+
     	//1）输出一定量的空白
+
     	for(int space; space< ?;space++)
     	    ?
+
     	//2)输出2*i-1 个星号
+
     	    ？
+
     	//输出换行
+
     	std::cout<<endl     
     }
 }
@@ -65,8 +82,10 @@ int main(){
    int n;
    std::cout<<typeid( n ).name()
        <<" "<<sizeof(n)<<" "<<sizeof(int)<<endl ; // 打印：int 4 4
+
    std::cout<<typeid( 8.1 ).name() 
     <<" "<<sizeof(8.1)<<" "<<sizeof(double)<<endl ; // 打印：double 4 4
+
 ```
 并编写一个模仿[C语言的输出输入输出基本类型](http://xuepro.xcguan.net/2017/10/30/C%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B1-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%89%80%E6%9C%89%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/)的C++程序。
 
@@ -455,11 +474,13 @@ int main(){
 
 ### 变量与基本类型
 1. 下面这个程序执行后会有什么结果或问题:
+```cpp
  #define SIZE 255
  int main(){
    unsigned char A[SIZE],i;
    for (i=0;i<=SIZE;i++)
       A[ i ]=i;
 }
+```
 
 
