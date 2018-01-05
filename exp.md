@@ -270,6 +270,153 @@ void main()
 }
 ```
 
+
+### 实验6 : 表达式
+
+1. 运行下面的程序，说明结果为什么是错的？
+```cpp
+#include <iostream>
+ 
+int main(){
+    double d1(100 - 99.99); // should equal 0.01
+
+    double d2(10 - 9.99); // should equal 0.01
+ 
+    if (d1 == d2)
+        std::cout << "d1 == d2" << "\n";
+    else if (d1 > d2)
+        std::cout << "d1 > d2" << "\n";
+    else if (d1 < d2)
+        std::cout << "d1 < d2" << "\n";
+    
+    return 0;
+}
+```
+2. 运行并理解下面不同的比较2个数字几乎相等的方法
+
+```cpp
+
+#include <cmath>
+ 
+bool approximatelyEqual(double a, double b, double epsilon){
+    return fabs(a - b) <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
+}
+
+bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relEpsilon)
+{
+    // Check if the numbers are really close -- needed when comparing numbers near zero.
+    double diff = fabs(a - b);
+    if (diff <= absEpsilon)
+        return true;
+ 
+    // Otherwise fall back to Knuth's algorithm
+    return diff <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * relEpsilon);
+}
+
+#include <iostream>
+int main()
+{
+    // a is really close to 1.0, but has rounding errors
+
+    double a = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1;
+ 
+    std::cout << approximatelyEqual(a, 1.0, 1e-8) << "\n";  
+
+     // compare "almost 1.0" to 1.0
+
+    std::cout << approximatelyEqual(a-1.0, 0.0, 1e-8) << "\n";
+
+    // compare "almost 0.0" to 0.0
+
+    std::cout << approximatelyEqualAbsRel(a-1.0, 0.0, 1e-12, 1e-8) << "\n"; // compare "almost 0.0" to 0.0
+
+
+}
+```
+
+3. 在农夫过河问题的检测物体是否在北岸的函数基础上，编写判断一个状态是否是安全状态？
+
+```cpp
+  bool farmerLocation(int state){
+  	 return state&0x08!=0; //true表示农夫在北岸，false表示在南岸
+  }
+```
+### 实验7: 语句
+
+1. 理解下列程序，并输入各种可能性测试程序执行情况
+```cpp
+#include <iostream>
+ 
+int main(){
+    int i = 2;
+    switch (i) {
+        case 1: std::cout << "1";
+        case 2: std::cout << "2";   //execution starts at this case label
+        case 3: std::cout << "3";
+        case 4:
+        case 5: std::cout << "45";
+                break;              //execution of subsequent statements is terminated
+        case 6: std::cout << "6";
+    }
+ 
+    std::cout << '\n';
+ 
+    switch (i) {
+        case 4: std::cout << "a";
+        default: std::cout << "d"; //there are no applicable constant_expressions 
+                                   //therefore default is executed
+    } 
+    std::cout << '\n';
+ 
+    switch (i) {
+        case 4: std::cout << "a";  //nothing is executed
+    }
+}
+```
+
+2. 运行并理解程序
+```cpp
+#include <iostream>
+int main(){
+    int x;
+    for( ; ; ){
+        std::cout << "Enter 0 to stop" << endl;
+        std::cin >> x;
+        if (x == 0){
+            break;
+    	}
+    	else if(x>0) continue;
+    	std::cout << "你输入了一个负数！" << endl;
+    }
+    return 0;
+}
+```
+
+### 实验8 : 函数
+
+1. 编写函数，用于交换两个变量的值，要求用传递变量指针（传值方式）和传递变量引用方式（传引用）写出两个这函数，并编写主函数测试这两个函数。
+
+2. 编写最大公约数的函数并测试它
+
+3. 用指针方式实现一些常见的 C 风格字符串的处理函数。如
+strcpy,strcat,strlen,strcmp,…. 具 体 可 参 见 msdn 对 这 些 函 数 的 说 明 ：
+http://msdn.microsoft.com/en-us/library/kk6xf663.aspx。
+示例（也可参考 http://www.math.bas.bg/~nkirov/2005/oop/deitel/cpphtp4_05.pdf ）：
+```cpp
+int Strlen(const char *str){
+ char*p = str;;
+ while( *p!=’\0’) p++;
+ return p-str;
+}
+```
+
+
+
+
+
+
+
+
 ## C++习题
 
 ### C++概述
@@ -304,4 +451,5 @@ void main()
    for (i=0;i<=SIZE;i++)
       A[ i ]=i;
 }
+
 
