@@ -21,7 +21,7 @@
 ```
 4.  写一个程序计算体积： cube(立方体), sphere(球), cone(圆锥).
  
-  Cube Volume = side^3 
+  Cube Volume = side<sup>3</sup>^3 
 
   Sphere Volume = (4/3) * pi * radius^3 
 
@@ -386,20 +386,18 @@ int main(){
 ```
 
 ### C++实验四： 指针和数组
+
 1. 理解并运行下列程序
 
+```cpp
 // T *  就是 “T的指针类型”
 
 // T * p 就是 “T的指针类型”的变量p
 
 int main(){
-
   int ival = 1024;
-
   int *pi = &ival;
-
   int **ppi = &pi; // "int **" 即使 "(int *) *"就是  "int的指针的指针类型"
-
 
 
   std::cout<<"*pi=:"<<*pi<<std::endl; //*pi 就是ival
@@ -411,12 +409,8 @@ int main(){
   std::cout<<"ppi=:"<<ppi<<std::endl; //ppi 就是pi的地址
 
   std::cout<<"&pi=:"<<&pi<<std::endl; //&pi 就是pi的地址
-
-
-
 }
-
-
+```
 
 2. 理解并运行求C风格字符串(最后有结束字符的字符数组)长度的函数。
 
@@ -437,7 +431,6 @@ int strLen(const char *s){
   return i;
 }
 
-
 int main(){
 
   const char * str = "hello world";  
@@ -454,14 +447,10 @@ int main(){
 }
 ```
 
-
-
-
 3. 编写比较2个C风格字符串的大小的函数strCmp，模仿C语言自带的比较大小函数strcmp.
 
 ```cpp
  /*strcmp(s1,s2)
-
  s1 = {'h','e','\0'}
  s2 = {'h','e','l','l','\0'}
 
@@ -479,11 +468,8 @@ int strCmp(const char *s1,const char *s2){
 
 }
 
-
-
 int main(){
   char s1[] = {'h','e','\0'};
-
   char s2[] = {'h','e','l','l','\0'};
 
   int ret = StrCmp(s1,s2);
@@ -493,13 +479,9 @@ int main(){
     std::cout<<s1<<"=="<<s2<<std::endl;
   else 
     std::cout<<s1<<">"<<s2<<std::endl;
-
 }
 ```
-
-
 4. 估计下列代码运行结果是什么？有什么错误？运行改程序，验证你的判断。
-
 
 ```cpp
 int main(){
@@ -530,9 +512,8 @@ int main(){
     std::cout<<*(p-1)<<'\t'<<*(q-1)<<std::endl;
 }
 ```
-5. 阅读编译下列程序，说明编译错误的原因。
+5. 阅读编译下列程序，说明编译错误的原因。并体会语法规则
 
-并体会语法规则
 ```
 不能用“一个const对象的指针或引用” 初始化或赋值给" non-const对象的指针或引用"
 
@@ -576,7 +557,7 @@ int main(){
 ```
 
 
-### 实验6 : 表达式
+### 实验5 : 表达式
 
 1.  运行下列程序，观察结果是否符合你的预期 
 ```cpp
@@ -693,7 +674,7 @@ bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relE
 
 #include <iostream>
 int main(){
-  
+
     // a is really close to 1.0, but has rounding errors
 
     double a = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1;
