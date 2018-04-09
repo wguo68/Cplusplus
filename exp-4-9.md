@@ -21,11 +21,11 @@
 ```
 4.  写一个程序计算体积： cube(立方体), sphere(球), cone(圆锥).
  
-  Cube Volume = side<sup>3</sup>^3 
+  Cube Volume = side<sup>3</sup>
 
-  Sphere Volume = (4/3) * pi * radius^3 
+  Sphere Volume = (4/3) * pi * radius<sup>3</sup> 
 
-  Cone Volume = pi * radius^2 * (height/3) 
+  Cone Volume = pi * radius<sup>2</sup> * (height/3) 
 
 
 ```cpp
@@ -50,9 +50,7 @@ int main(){
 
 ### C++实验二：变量和类型
 
-1.
-
-写一个程序，按照类似下列格式，输出你的操作系统中各种常用内在类型的变量占用内存大小。结果形如：
+1.写一个程序，按照类似下列格式，输出你的操作系统中各种常用内在类型的变量占用内存大小。结果形如：
 
 ```
  bool:            1个字节
@@ -67,27 +65,17 @@ int main(){
 
 ```cpp
   unsigned u = 10, u2 = 42;
-
   std::cout << u2 - u << std::endl;
-
   std::cout << u - u2 << std::endl; 
 
   int i = 10, i2 = 42;
 
   std::cout << i2 - i << std::endl;
-
   std::cout << i - i2 << std::endl;
-
   std::cout << i - u << std::endl;
-
   std::cout << u - i << std::endl; 
 
-
-
-
-
   for (unsigned u = 10; u >= 0; --u)
-
      std::cout << u << std::endl;
 ```
 
@@ -97,24 +85,17 @@ int main(){
 
 ```cpp
 #include <string>
-
 #include <iostream>
-
 using namespace std;
 
 int a;
-
 string str;
-
 int main(){
     int b;
-
     string str2 ,str3(”hello”);
 
     cout<<a<<‘\t’<<b<<‘\n’;
-
-    cout<<str<<‘\t’<<str2<<‘\t’<<str3<<endl;  
-
+    cout<<str<<‘\t’<<str2<<‘\t’<<str3<<endl; 
 }
 ```
 
@@ -138,44 +119,28 @@ int main() {
     int i4(3.5);  
 
     std::cout<<d<<std::endl;
-
     std::cout<<d1<<std::endl;
-
     std::cout<<d2<<std::endl;
-
     std::cout<<d3<<std::endl;
-
-    std::cout<<d4<<std::endl;
-       
+    std::cout<<d4<<std::endl;       
 
     std::cout<<i<<std::endl;
-
     std::cout<<i1<<std::endl;
     std::cout<<i2<<std::endl;
-
-    std::cout<<i3<<std::endl;
-  
+    std::cout<<i3<<std::endl;  
     std::cout<<i4<<std::endl;
      
-    auto a = 3.5;      
-
+    auto a = 3.5;  
     auto a1 = {3.5} 
     auto a2 = i2+d2/2;
 
     std::cout<<a<<std::endl;
-
     std::cout<<a1<<std::endl;
-
     std::cout<<a2<<std::endl;
-
 }
 ```
 
-
-
-
 5.说明下列程序的编译运行结果 ，为什么？如果用auto定义这些变量，结果又是什么？
-
 ```
 int main(){
     char ch = 255 ,ch1 = 125;
@@ -206,21 +171,15 @@ int main(){
 
 ```cpp
 #include <cmath>
-
 #include <iostream>
-
 #include <typeinfo>
-
 using namespace std;
 
 int main() {
 
   auto b = true; // a bool
-
   auto ch{'x'}; // a char
-
   auto i = 123; // an int
-
   auto d{1.2}; // a double
 
   auto z = sqrt(d); // z 是sqrt(d)的返回类型
@@ -295,14 +254,11 @@ int main() {
    cosnt int &r10 = 2*i+1;
    const int &r11  =d;
 
-
    i = r7;
    r1 = r7;
-   r7 = r1;         
-
+   r7 = r1;   
 }
 ```
-
 
 2. 引用经常用作函数的形参，表示该形参是实际参数的别名。体会下列函数的区别
 
@@ -315,7 +271,6 @@ void swap(int x, int y){
 void Swap(int &x, int &y){
    int t = x; x = y; y = t;
 } 
-
 
 int main(){
    int a = 3,b = 4;
@@ -331,34 +286,20 @@ int main(){
 
 
 ```cpp
- typedef double T;
-
+typedef double T;
 int min_index(T *a,int n){
-
   if(n<=0) return -1;
-
-
-
   T min_value = a[0];
-
   int index = 0;
 
-
-
   for(int i = 1; i<n;i++){
-
     if(a[i]<min_value){
-
       min_value = a[i];
-
       index = i;
-
     }
-
   }
 
   return index;
-
 }
 ```
        
@@ -372,11 +313,9 @@ int main(){
        std::cout<<arr[i]<<'\t';
 
   std::cout<<std::endl;
-
   int index，index_ma;//分别表示最小值和最大值的下标
 
   //补充你的代码
-
   //...?...
 
   
@@ -557,7 +496,7 @@ int main(){
 ```
 
 
-### 实验5 : 表达式
+### 实验5 : 运算符与表达式
 
 1.  运行下列程序，观察结果是否符合你的预期 
 ```cpp
@@ -654,7 +593,6 @@ int main(){
 6. 运行并理解下面不同的比较2个数字几乎相等的方法
 
 ```cpp
-
 #include <cmath>
  
 bool approximatelyEqual(double a, double b, double epsilon){
@@ -679,16 +617,13 @@ int main(){
 
     double a = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1;
  
-    std::cout << approximatelyEqual(a, 1.0, 1e-8) << "\n";  
-
+    std::cout << approximatelyEqual(a, 1.0, 1e-8) << "\n"; 
      // compare "almost 1.0" to 1.0
 
     std::cout << approximatelyEqual(a-1.0, 0.0, 1e-8) << "\n";
-
     // compare "almost 0.0" to 0.0
 
     std::cout << approximatelyEqualAbsRel(a-1.0, 0.0, 1e-12, 1e-8) << "\n"; // compare "almost 0.0" to 0.0
-
 
 }
 ```
