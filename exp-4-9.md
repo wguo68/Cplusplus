@@ -708,6 +708,96 @@ switch(cmd){
 需要包含数学头文件#include <cmath>
 
 
+### 实验7 : 函数
+
+1. 分别编写最大公约数的非递归函数和递归函数并测试它们
+
+2. 理解下列函数指针的用法
+
+```cpp
+void traverse(int  arr[], int n, void(*fp)(const int e) ){
+      for (int i = 0 ; i<n; i++)        
+         fp( arr[i] );
+}
+
+void Print( const int a){ cout<<a<<’\t’;}
+
+int sum = 0;
+void Sum( const int a){  sum += a;}
+
+int main(){
+   void(*fp)(const int e) = Print;
+   int a[] = {2,3,5,7,12,9};
+   traverse(a,6,fp);                           cout<<endl;
+   fp = Sum;    traverse(a,6,fp);       cout<<sum<<endl;
+}
+```
+
+3. 对下列一列整数进行排序，其中用到对2个数比较大小的功能
+，分别传入不同的比较函数，如Less表示小于，而Larger表示大于。
+
+补充完整的代码
+
+```cpp
+
+#include <iostream>
+void sort(int  arr[], const int n, 
+    bool (*fp)(const int& a, cosnt int &b )  )
+{
+   //补充你的代码
+   //...
+}
+
+bool Less(const int& a, cosnt int &b )
+{
+  return a<b;
+}
+
+bool Larger(const int& a, cosnt int &b )
+{
+  return a>b;
+}
+
+void Print(int arr ,int n){
+    for(int i = 0 ; i<n;i++)
+      std::cout<<arr[i]<<'\t';
+}
+
+void Print(const int a){
+   std::cout<<a<<'\t';
+}
+
+int sum = 0;
+void Sum( const int a){  sum += a;}
+
+//下列参数fp有默认值nullptr
+void traverse(int  arr[], int n, void(*fp)(const int e)=nullptr ){
+      for (int i = 0 ; i<n; i++){        
+         补充你的代码
+      }
+}
+
+int main(){
+    int a[] = {-23,3,34,-15,2,-89,11,19};
+    int n = 8;
+    bool (*fp)(const int& a, cosnt int &b )  = nullptr;
+
+    fp  = Less;
+    sort(a,n,fp)
+    traverse(a,n);
+
+    fp  = Larger;
+    sort(a,n,fp)
+    traverse(a,n);
+
+    traverse(a,n,sum);
+    std::cout<<"The sum is "<<sum<<std::endl;
+
+}
+```
+
+
+
 
 ### 实验2: 变量与基本类型
 
@@ -762,6 +852,7 @@ void f4(){
   auto sz = 0, pi = 3.14; 
 }
 ```
+
 
 ### 实验3 :自定义类型
 
