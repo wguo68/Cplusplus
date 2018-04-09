@@ -576,6 +576,158 @@ int main(){
 ```
 
 
+### 实验6 : 表达式
+
+1.  运行下列程序，观察结果是否符合你的预期 
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+  int x = 1;
+  int a = ++x;
+  int b = x++;
+  int c = ++ ++x; 
+  int d = x+ ++x;
+  int e = x++ ++;
+  cout<<a<<endl<<b<<endl<<c<<endl
+     <<d<<endl<<e<<endl;
+}   
+```
+
+2. 理解并运行下列程序
+
+```cpp
+#include <iostream>
+
+#include <bitset>
+
+using namespace std;
+
+int main(){
+  short a = 5,b=6;
+
+  cout<<a<<'\t'<<bitset<16>(a)<<endl;
+  cout<<b<<'\t'<<bitset<16>(b)<<endl;
+
+  short c = a&b,d = a|b,e = a^b;
+
+  cout<<c<<'\t'<<bitset<16>(c)<<endl;
+  cout<<d<<'\t'<<bitset<16>(d)<<endl;
+  cout<<e<<'\t'<<bitset<16>(e)<<endl;
+}
+
+```
+
+3. 下列语句输出结果是多少？
+
+```cpp
+-30 * 3 + 21 / 5 
+-30 + 3 * 21 / 5  
+30 / 3 * 21 % 5  
+-30 / 3 * 21 % 4  
+-30/(double)3+(double)21/5
+-30/(double)3+(double)21/(double)5
+(double)30 / 3 * 21 % 5     //这一句有没有编译错误？
+```
+
+4. 下列语句输出结果是多少？
+```cpp
+#include <iostream>
+#include <bitset>
+using namespace std;
+int main(){
+  short a = 5,b=6;
+  cout<<a<<'\t'<<bitset<16>(a)<<endl;
+  cout<<b<<'\t'<<bitset<16>(b)<<endl;
+
+  short c = a&b,d = a|b,e = a^b;
+  cout<<c<<'\t'<<bitset<16>(c)<<endl;
+  cout<<d<<'\t'<<bitset<16>(d)<<endl;
+  cout<<e<<'\t'<<bitset<16>(e)<<endl;
+            cout<< boolalpha <<a&&b << endl；
+            cout<< boolalpha <<a||b << endl；
+}
+```
+
+5. 运行下面的程序，说明结果为什么是错的？
+```cpp
+#include <iostream>
+ 
+int main(){
+    double d1(100 - 99.99); // should equal 0.01
+
+    double d2(10 - 9.99); // should equal 0.01
+ 
+    if (d1 == d2)
+        std::cout << "d1 == d2" << "\n";
+    else if (d1 > d2)
+        std::cout << "d1 > d2" << "\n";
+    else if (d1 < d2)
+        std::cout << "d1 < d2" << "\n";
+    
+    return 0;
+}
+```
+
+6. 运行并理解下面不同的比较2个数字几乎相等的方法
+
+```cpp
+
+#include <cmath>
+ 
+bool approximatelyEqual(double a, double b, double epsilon){
+    return fabs(a - b) <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
+}
+
+bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relEpsilon)
+{
+    // Check if the numbers are really close -- needed when comparing numbers near zero.
+    double diff = fabs(a - b);
+    if (diff <= absEpsilon)
+        return true;
+ 
+    // Otherwise fall back to Knuth's algorithm
+    return diff <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * relEpsilon);
+}
+
+#include <iostream>
+int main(){
+  
+    // a is really close to 1.0, but has rounding errors
+
+    double a = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1;
+ 
+    std::cout << approximatelyEqual(a, 1.0, 1e-8) << "\n";  
+
+     // compare "almost 1.0" to 1.0
+
+    std::cout << approximatelyEqual(a-1.0, 0.0, 1e-8) << "\n";
+
+    // compare "almost 0.0" to 0.0
+
+    std::cout << approximatelyEqualAbsRel(a-1.0, 0.0, 1e-12, 1e-8) << "\n"; // compare "almost 0.0" to 0.0
+
+
+}
+```
+
+7. 在农夫过河问题的检测物体是否在北岸的函数基础上，编写判断一个状态是否是安全状态？
+
+```cpp
+  bool farmerLocation(int state){
+     return state&0x08!=0; //true表示农夫在北岸，false表示在南岸
+  }
+```
+
+
+
+
+
+
+
+
+
 2. 假设行数从键盘输入，打印输出如下的金字塔。
 
 ```cpp
@@ -830,76 +982,7 @@ void main()
 ```
 
 
-### 实验6 : 表达式
 
-1. 运行下面的程序，说明结果为什么是错的？
-```cpp
-#include <iostream>
- 
-int main(){
-    double d1(100 - 99.99); // should equal 0.01
-
-    double d2(10 - 9.99); // should equal 0.01
- 
-    if (d1 == d2)
-        std::cout << "d1 == d2" << "\n";
-    else if (d1 > d2)
-        std::cout << "d1 > d2" << "\n";
-    else if (d1 < d2)
-        std::cout << "d1 < d2" << "\n";
-    
-    return 0;
-}
-```
-2. 运行并理解下面不同的比较2个数字几乎相等的方法
-
-```cpp
-
-#include <cmath>
- 
-bool approximatelyEqual(double a, double b, double epsilon){
-    return fabs(a - b) <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-}
-
-bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relEpsilon)
-{
-    // Check if the numbers are really close -- needed when comparing numbers near zero.
-    double diff = fabs(a - b);
-    if (diff <= absEpsilon)
-        return true;
- 
-    // Otherwise fall back to Knuth's algorithm
-    return diff <= ( (fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * relEpsilon);
-}
-
-#include <iostream>
-int main()
-{
-    // a is really close to 1.0, but has rounding errors
-
-    double a = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1;
- 
-    std::cout << approximatelyEqual(a, 1.0, 1e-8) << "\n";  
-
-     // compare "almost 1.0" to 1.0
-
-    std::cout << approximatelyEqual(a-1.0, 0.0, 1e-8) << "\n";
-
-    // compare "almost 0.0" to 0.0
-
-    std::cout << approximatelyEqualAbsRel(a-1.0, 0.0, 1e-12, 1e-8) << "\n"; // compare "almost 0.0" to 0.0
-
-
-}
-```
-
-3. 在农夫过河问题的检测物体是否在北岸的函数基础上，编写判断一个状态是否是安全状态？
-
-```cpp
-  bool farmerLocation(int state){
-  	 return state&0x08!=0; //true表示农夫在北岸，false表示在南岸
-  }
-```
 ### 实验7: 语句
 
 1. 理解下列程序，并输入各种可能性测试程序执行情况
