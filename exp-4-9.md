@@ -796,7 +796,133 @@ int main(){
 }
 ```
 
+### 实验8 : 类
 
+1. 实现一个较为完整的Date类，要求
+
+1) 能从整数的参数年月日构造Date对象
+
+2) 能从一个字符串如"2018-5-4"构造一个Date类对象，并能从任何Date类对象输出这种格式的日期字符串
+
+3）Date类有一个静态成员变量default_date，当构造函数的年月日如果为0时就取这个默认成员的对应值作为创建Date类对象的值。
+
+4) 实现一个友元函数，可以比较2个Date对象的大小。
+
+5) 查询信息的成员函数要尽可能是const成员函数
+
+2. 实现一个表示字符串的String类，要求具备一些常用功能，比如求长度、拼接、查找字符串或字符、比较大小、字符串拷贝、字符串赋值、可以从一个字符串文字量构造这个String类的对象等等
+
+### 实验9 : 运算符重载：模仿C++的string实现一个字符串String类
+
+ 参考链接： ![](https://xuepro.xcguan.net/2018/05/14/%E6%A8%A1%E4%BB%BFC++%E7%9A%84string%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2String%E7%B1%BB/)
+ 
+
+### 实验10 : 派生类
+
+1.  假设用一个抽象基类Shape表示一个二维几何形状，然后从这个Shape派生出一些具体的二维几何形状如Point、Circle、Rectangle、Triangle等
+       //抽象基类Shape
+       
+       class Shape
+       {
+       public:
+           virtual void draw() const= 0;
+           virtual double area() const= 0;
+       };
+       
+       class Point: public Shape{
+           double x{0},y{0};
+         public:
+           //...
+           
+       };
+       
+       class Circle: public Point{
+           double radius_{1.};
+          public:
+           void draw(){
+               " 绘制一个圆，其坐标为:"<<"("<<x<<","<<y
+               <<")\t,其半径为: "<<radius<<std::end;}
+           //...
+           
+       };
+       
+       class Rectangle: public Point{
+           double width_,height_;
+          public:
+           //...
+       };
+       
+       
+       
+       class Triangle: public Point{
+          Point B,C;  //A,B,C共3个点表示一个三角形
+          public:
+           //...
+           
+       };
+       
+       
+       //用一个vector保存所有形状，例如
+       
+       #include <vector>
+       
+       #include <iostream>
+       
+       int main(){
+           std::vector<Shape*> shapes;
+           
+           Circle *pCir = new Circle(2.0,3.,25.); //圆心为(2.0,3.0)，半径是25.圆
+           shapes.push_back(pCir);
+           //...
+           
+           
+           for(int i = 0 ; i<shapes.size();i++){
+               std::cout<<shapes.area()<<std::endl;
+           }
+       }
+   
+2. 编写一个简化版的员工管理程序，假设一个公司的员工分为2种：普通雇员和经理。普通雇员包括：姓名、雇佣日期、部门代号、薪水，而作为一个特殊雇员的经理，除了具有雇员的一般特性外，还管理一群员工并且具有代表经理级别的级别。要求用一个c++的vector存储所有雇员（包括经理）的信息，程序能添加雇员（包括经理）、打印（显示）所有员工信息、统计普通雇员的平均薪水、查询某个员工的信息等。可以在下面的又该改进的Employee和Manager类的基础上完善这两个类，然后借助于vector的功能实现我们的员工管理程序。
+
+    class Employee {
+      protected:
+       string name = "no name";
+       Date hiring_date = Deta::default_date;
+       short department = 1;
+       double salary;//
+     public:  
+        int get_department(){ return department;}
+        void print()const{/*...?   */}
+        
+       // ...
+        
+    };
+    
+    class Manager: public Employee{
+        //...
+     public:
+        void print()const{
+           //...?
+            
+        } 
+        //...
+        
+    };
+    
+    //下列程序有什么问题？
+    
+    int main()
+    {
+        Manager mm;
+        mm.print();
+        Employee ee;
+      
+        Employee *pe = &ee;
+        pe->print();  //调用的是Employee::print()
+        
+        pe = &mm;  
+        pe->print(); //调用的是Employee::print()    
+        
+    }
 
 
 ### 实验2: 变量与基本类型
